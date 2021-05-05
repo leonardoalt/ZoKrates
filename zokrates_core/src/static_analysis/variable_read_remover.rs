@@ -46,20 +46,20 @@ impl<'ast, T: Field> VariableReadRemover<'ast, T> {
                     _ => unreachable!(),
                 };
 
-                self.statements.push(TypedStatement::Assertion(
-                    (0..size)
-                        .map(|index| {
-                            BooleanExpression::UintEq(
-                                box i.clone().annotate(UBitwidth::B32),
-                                box index.into(),
-                            )
-                        })
-                        .fold(None, |acc, e| match acc {
-                            Some(acc) => Some(BooleanExpression::Or(box acc, box e)),
-                            None => Some(e),
-                        })
-                        .unwrap(),
-                ));
+//                self.statements.push(TypedStatement::Assertion(
+//                    (0..size)
+//                        .map(|index| {
+//                            BooleanExpression::UintEq(
+//                                box i.clone().annotate(UBitwidth::B32),
+//                                box index.into(),
+//                            )
+//                        })
+//                        .fold(None, |acc, e| match acc {
+//                            Some(acc) => Some(BooleanExpression::Or(box acc, box e)),
+//                            None => Some(e),
+//                        })
+//                        .unwrap(),
+//                ));
 
                 (0..size)
                     .map(|i| {
